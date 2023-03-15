@@ -9,7 +9,12 @@
 
 <script>
 export default {
-  name: 'alexrazbakov',
+  props: {
+    name: {
+      type: String,
+      default: 'alexrazbakov',
+    },
+  },
 }
 </script>
 
