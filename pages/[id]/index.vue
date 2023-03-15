@@ -1,7 +1,7 @@
 <template>
   <main>
     <THeader title="Events" />
-    <div>nfc_id</div>
+    <UserProfile />
   </main>
 </template>
 
