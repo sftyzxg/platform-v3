@@ -88,9 +88,9 @@
         {{ views }} views • {{ subscribers }} subscribers
       </div>
     </div>
-    <div class="h-24 pt-2 g-4 bg-yellow-200">
+    <div class="h-24 pt-2 g-4">
       <div>
-        <div class="h-8 w-1/3 bg-red-300 inline-block">
+        <div class="h-8 w-1/3 inline-block">
           <div
             class="
               relative
@@ -109,8 +109,8 @@
                 relative
                 left-1/2
                 top-1/2
-                w-6
-                h-6
+                w-5
+                h-5
                 transform
                 -translate-x-1/2 -translate-y-1/2
               "
@@ -129,7 +129,7 @@
             </svg>
           </div>
         </div>
-        <div class="h-8 w-1/3 bg-red-300 inline-block">
+        <div class="h-8 w-1/3 inline-block">
           <div
             class="
               relative
@@ -174,7 +174,7 @@
             </svg>
           </div>
         </div>
-        <div class="h-8 w-1/3 bg-red-300 inline-block">
+        <div class="h-8 w-1/3 inline-block">
           <div
             class="
               relative
@@ -211,7 +211,7 @@
         </div>
       </div>
       <div>
-        <div class="h-8 w-1/3 bg-red-300 inline-block">
+        <div class="h-8 w-1/3 inline-block">
           <div
             class="
               relative
@@ -246,7 +246,7 @@
             </svg>
           </div>
         </div>
-        <div class="h-8 w-1/3 bg-red-300 inline-block">
+        <div class="h-8 w-1/3 inline-block">
           <div
             class="
               relative
@@ -281,7 +281,7 @@
             </svg>
           </div>
         </div>
-        <div class="h-8 w-1/3 bg-red-300 inline-block">
+        <div class="h-8 w-1/3 inline-block">
           <div
             class="
               relative
@@ -349,12 +349,113 @@
           </div>
         </div>
       </div>
+      <div class="h-16 p-2 g-2">
+        <button
+          v-if="!subscribed"
+          class="w-full bg-black text-white py-2 px-4 rounded-full"
+          @click="subscribe"
+        >
+          Subscribe
+        </button>
+        <button
+          v-else
+          class="
+            w-full
+            bg-white
+            text-black
+            py-2
+            px-4
+            rounded-full
+            border-2 border-gray-200
+          "
+          @click="subscribe"
+        >
+          Subscribed
+        </button>
+      </div>
+      <div class="h-16 p-2">
+        <div class="h-10 w-1/5 inline-block">
+          <button
+            v-if="currentwindow == 'About'"
+            class="h-10 w-full bg-black text-white rounded-full"
+          >
+            About
+          </button>
+          <button
+            v-else
+            class="
+              w-full
+              h-10
+              bg-white
+              text-black
+              rounded-full
+              border-2 border-gray-200
+            "
+            @click="switchwindow('About')"
+          >
+            About
+          </button>
+        </div>
+        <div class="h-10 w-1/5 inline-block">
+          <button
+            v-if="currentwindow == 'Feed'"
+            class="h-10 w-full bg-black text-white rounded-full"
+          >
+            Feed
+          </button>
+          <button
+            v-else
+            class="
+              h-10
+              w-full
+              bg-white
+              text-black
+              rounded-full
+              border-2 border-gray-200
+            "
+            @click="switchwindow('Feed')"
+          >
+            Feed
+          </button>
+        </div>
+        <div class="h-10 w-3/5 inline-block">
+          <button
+            v-if="currentwindow == 'Events'"
+            class="h-10 w-full bg-black text-white rounded-full"
+          >
+            Upcoming Events
+          </button>
+          <button
+            v-else
+            class="
+              h-10
+              w-full
+              bg-white
+              text-black
+              rounded-full
+              border-2 border-gray-200
+            "
+            @click="switchwindow('Events')"
+          >
+            Upcoming Events
+          </button>
+        </div>
+      </div>
+      <div v-if="currentwindow == 'About'" class="p-4 h-56">{{ about }}</div>
+      <div v-if="currentwindow == 'Feed'" class="p-4 h-56">{{ feed }}</div>
+      <div v-if="currentwindow == 'Events'" class="p-4 h-56">{{ event }}</div>
     </div>
   </main>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      subscribed: false,
+      currentwindow: 'About',
+    }
+  },
   props: {
     name: {
       type: String,
@@ -375,6 +476,27 @@ export default {
     subscribers: {
       type: String,
       default: '13',
+    },
+    about: {
+      type: String,
+      default:
+        'Founder of WeDance. Salsa Cubana Instructor. Looking for dancer partner to practice.Salsa Cubana Instructor @MontunoClub. Salsa, Bachata, Kizomba Dancer. IT Consultant. Software Developer.I also love to dance Urban Kiz and Bachata Dominicana. Looking for partner to practice online lessons with @albertovaldes.I love to culture travel and dance helps me to connect even better with locals, it’s just like a universal language to communicate anywhere.',
+    },
+    feed: {
+      type: String,
+      default: 'Feed',
+    },
+    events: {
+      type: String,
+      default: 'Events',
+    },
+  },
+  methods: {
+    subscribe() {
+      this.subscribed = !this.subscribed
+    },
+    switchwindow(window) {
+      this.currentwindow = window
     },
   },
 }
