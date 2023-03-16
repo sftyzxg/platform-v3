@@ -488,9 +488,9 @@ export default {
     subscribe() {
       this.subscribed = !this.subscribed
       if (this.subscribed) {
-        this.subscribers = this.subscribers + 1
+        this.subscribers++
       } else {
-        this.subscribers = this.subscribers - 1
+        this.subscribers--
       }
     },
     switchwindow(window) {
