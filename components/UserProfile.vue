@@ -442,7 +442,7 @@
       </div>
       <div v-if="currentwindow == 'About'" class="p-4 h-56">{{ about }}</div>
       <div v-if="currentwindow == 'Feed'" class="p-4 h-56">{{ feed }}</div>
-      <div v-if="currentwindow == 'Events'" class="p-4 h-56">{{ event }}</div>
+      <div v-if="currentwindow == 'Events'" class="p-4 h-56">{{ events }}</div>
     </div>
   </main>
 </template>
