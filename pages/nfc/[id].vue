@@ -1,8 +1,19 @@
 <template>
   <main>
-    <THeader title="Events" />
-    <div>nfc_id</div>
+    <div>Redirecting</div>
   </main>
 </template>
 
-<script></script>
+<script>
+export default {
+  props: {
+    id: {
+      type: String,
+      default: 'alexrazbakov',
+    },
+  },
+  mounted() {
+    this.$router.push(`/${this.id}`)
+  },
+}
+</script>

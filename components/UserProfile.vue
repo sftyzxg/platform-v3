@@ -453,6 +453,8 @@ export default {
     return {
       subscribed: false,
       currentwindow: 'About',
+      subscribers: 13,
+      views: 348,
     }
   },
   props: {
@@ -467,14 +469,6 @@ export default {
     title: {
       type: String,
       default: 'Founder of WeDance',
-    },
-    views: {
-      type: String,
-      default: '348',
-    },
-    subscribers: {
-      type: String,
-      default: '13',
     },
     about: {
       type: String,
@@ -493,6 +487,11 @@ export default {
   methods: {
     subscribe() {
       this.subscribed = !this.subscribed
+      if (this.subscribed) {
+        this.subscribers = this.subscribers + 1
+      } else {
+        this.subscribers = this.subscribers - 1
+      }
     },
     switchwindow(window) {
       this.currentwindow = window
